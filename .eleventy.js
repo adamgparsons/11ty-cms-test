@@ -1,14 +1,13 @@
-module.exports = function(config) {
-  config.addCollection("posts", collection => {
-    return collection.getFilteredByGlob("src/site/posts/*.md");
+module.exports = function(eleventyConfig) {
+  eleventyConfig.addPassthroughCopy("images");
+  eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("admin");
+
+  eleventyConfig.addCollection("postsReversed", collection => {
+    return collection.getFilteredByTag("post").reverse();
   });
+
   return {
-    dir: {
-      input: "src/site",
-      includes: "templates"
-    },
-    templateFormats: ["html", "md"],
-    htmlTemplatesEngine: "liquid",
-    markdownTemplateEngine: "liquid"
+    passthroughFileCopy: true
   };
 };
