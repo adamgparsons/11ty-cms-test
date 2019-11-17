@@ -1,0 +1,25 @@
+backend:
+  name: git-gateway
+
+  collections:
+    - name:"posts"
+      label: "Meetup Notes"
+      folder: "posts"
+      create: true
+      slug: {{slug}}
+      fields:
+        - {
+          label: "Title", name: "title", widget: "string"
+        }
+        - {
+          label: "Publish date",
+          name: "date",
+          widget: "datetime"
+        }
+        - {
+          label: "Post Body",
+          name: "body",
+          widget: "markdown"
+        }
+
+  # Need to add media_folder for the location of where Netlify CMS uploads images
